@@ -10,10 +10,15 @@ report_taxonomy <- function(new, old){
     Old = old
   )
   
+  old.frm <- data.frame(table(Old=old)) |>
+    mutate(`Old Frequency` = Freq) |>
+    select(-Freq)
+  
   frm |> 
     group_by(New) |>
     group_modify(f) |> 
     arrange(New, Old)  |>
-    select(Old, New)
+    select(Old, New) |> 
+    left_join(old.frm)
 
 }
