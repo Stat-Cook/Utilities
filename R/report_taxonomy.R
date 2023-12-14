@@ -13,6 +13,10 @@ report_taxonomy <- function(new, old){
   old.frm <- data.frame(table(Old=old)) |>
     mutate(`Old Frequency` = Freq) |>
     select(-Freq)
+
+  f <- function(frm, grp, .col){
+    unique(frm)
+  }
   
   frm |> 
     group_by(New) |>
