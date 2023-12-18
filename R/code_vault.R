@@ -1,7 +1,13 @@
-folder_to_vault <- function(files, 
-                                vault="../analysis_vault", 
-                                pattern="Temp"){
-  
+folder_to_vault <- function(files=".", 
+                            pattern="Temp",
+                            vault="../analysis_vault"
+                            ){
+  #' Freeze current repo to a tarball.
+  #' 
+  #' By default the function will look for a folder one level above the 
+  #' working directory called 'analysis_vault'.  
+  #' 
+  #' @export
   hex <- c(0:9, letters[1:6])  
   .bool <- TRUE
   
@@ -27,6 +33,9 @@ folder_to_vault <- function(files,
 }
 
 folder_from_vault <- function(.tar, .exdir=NULL){
+  #' Unpack a tarball
+  #' 
+  #' @export
   if (is.null(.exdir)){
     .exdir <- stringr::str_replace(.tar, ".tar$", "")
   }
